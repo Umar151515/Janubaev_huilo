@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ислам Жаныбаев: Полная история</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #8A2BE2;
+            --secondary: #FF10F0;
+            --accent: #00E5FF;
+            --dark: #1A0033;
+            --light: #F5F5FF;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, #2D0066 100%);
+            color: var(--light);
+            line-height: 1.8;
+            overflow-x: hidden;
+            padding: 0;
+            margin: 0;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 100%;
+            padding: 20px;
+            margin: 0 auto;
+        }
+        
+        /* Анимированный фон */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .bg-bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(138, 43, 226, 0.1);
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+                opacity: 0.8;
+            }
+        }
+        
+        /* Шапка сайта */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(255, 16, 240, 0.3);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 16, 240, 0.6), 
+                             0 0 30px rgba(0, 229, 255, 0.4);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+        
+        /* Навигация */
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--light);
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-btn:hover {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 16, 240, 0.3);
+        }
+        
+        /* Основной контент */
+        .chapter {
+            background: rgba(26, 0, 51, 0.7);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: transform 1s ease, opacity 1s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .chapter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary), var(--accent));
+        }
+        
+        .chapter.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .chapter-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .chapter-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+        }
+        
+        .chapter-content {
+            font-size: 1.15rem;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            background: linear-gradient(45deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        
+        /* Цитата */
+        .quote {
+            font-style: italic;
+            padding: 30px;
+            margin: 30px 0;
+            background: rgba(0, 229, 255, 0.1);
+            border-radius: 15px;
+            border-left: 5px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+            animation: pulse 5s infinite ease-in-out;
+        }
+        
+        .quote::before {
+            content: '\201C';
+            font-size: 5rem;
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            opacity: 0.2;
+            color: var(--accent);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.2);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(0, 229, 255, 0);
+            }
+        }
+        
+        /* Иконки */
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            font-size: 24px;
+            color: var(--accent);
+            animation: spin 10s infinite linear;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.1);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+        
+        /* Футер */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            background: rgba(0, 0, 0, 0.3);
+            border-top: 1px solid rgba(138, 43, 226, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary), var(--accent));
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: var(--light);
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .chapter {
+                padding: 20px;
+            }
+            
+            .chapter-title {
+                font-size: 1.8rem;
+            }
+            
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Дополнительные анимации */
+        .float {
+            animation: floating 5s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 2s ease forwards;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="bg-animation">
+        <div class="bg-bubble" style="width: 300px; height: 300px; top: -150px; left: -100px; animation-delay: 0s;"></div>
+        <div class="bg-bubble" style="width: 200px; height: 200px; bottom: -100px; right: -50px; animation-delay: 1s;"></div>
+        <div class="bg-bubble" style="width: 250px; height: 250px; top: 50%; right: -125px; animation-delay: 2s;"></div>
+        <div class="bg-bubble" style="width: 150px; height: 150px; bottom: 20%; left: -75px; animation-delay: 3s;"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1 class="float">Ислам Жаныбаев</h1>
+                <p class="subtitle">История необычной жизни в парадоксальном мире</p>
+                
+                <div class="icon-container">
+                    <div class="icon"><i class="fas fa-door-open"></i></div>
+                    <div class="icon"><i class="fas fa-heart"></i></div>
+                    <div class="icon"><i class="fas fa-star"></i></div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="nav-container">
+            <button class="nav-btn">Детство</button>
+            <button class="nav-btn">Личность</button>
+            <button class="nav-btn">Семья</button>
+            <button class="nav-btn">Взрослая жизнь</button>
+            <button class="nav-btn">Философия</button>
+        </div>
+        
+        <div class="chapter">
+            <h2 class="chapter-title">Детство и юность</h2>
+            <p class="chapter-content">Ислам Жаныбаев родился в необычном и парадоксальном мире, где законы общества сильно отличались от привычных нам. С самого детства он отличался странным восприятием себя и реальности.</p>
+            <p class="chapter-content">У Ислама было необычное телосложение: каждое яйцо у него было меньше другого, что стало предметом насмешек, но он воспринимал это как особенность, выделяющую его среди других.</p>
+            <p class="chapter-content">В детстве он начал осознавать свою нетрадиционную идентичность. Позже он открыто заявил, что является <span class="highlight">трансгендерным геем-бисексуалом</span>.</p>
+        </div>
+        
+        <div class="chapter">
+            <h2 class="chapter-title">Личность и самобытность</h2>
+            <p class="chapter-content">Он прошёл операцию по уменьшению гениталий, так как чувствовал, что его тело должно соответствовать его внутреннему ощущению.</p>
+            <p class="chapter-content">Ислам выбрал уникальную идентичность: он считал себя <span class="highlight">«дверной ручкой»</span> и <span class="highlight">«оно»</span>. Это стало неотъемлемой частью его мировоззрения.</p>
+            <p class="chapter-content">Впоследствии он женился на двери, так как чувствовал глубокую эмоциональную и физическую привязанность к ней.</p>
+            
+            <div class="quote">
+                <p>"Как дверная ручка открывает мир другим, так и я открываю новые взгляды на жизнь"</p>
+            </div>
+        </div>
+        
+        <div class="chapter">
+            <h2 class="chapter-title">Семья и окружение</h2>
+            <p class="chapter-content">У Ислама было <span class="highlight">пять отцов</span>, что уже само по себе было необычным для его мира.</p>
+            <p class="chapter-content">Он имел склонность к нетрадиционным связям и откровенно любил геев.</p>
+            
+            <div class="icon-container">
+                <div class="icon"><i class="fas fa-users"></i></div>
+                <div class="icon"><i class="fas fa-home"></i></div>
+                <div class="icon"><i class="fas fa-hand-holding-heart"></i></div>
+            </div>
+        </div>
+        
+        <div class="chapter">
+            <h2 class="chapter-title">Взрослая жизнь</h2>
+            <p class="chapter-content">Став взрослым, Ислам начал активно участвовать в индустрии для взрослых:</p>
+            <p class="chapter-content">- снимался в порно вместе с геями,</p>
+            <p class="chapter-content">- позже стал работать проституткой, где мог открыто выражать свои желания.</p>
+            <p class="chapter-content">В какой-то момент его поведение и мировоззрение привели к тому, что его признали психически нестабильным и отправили в психиатрическую больницу, где он провёл часть своей жизни.</p>
+        </div>
+        
+        <div class="chapter">
+            <h2 class="chapter-title">Особенности судьбы</h2>
+            <p class="chapter-content">В его мире педофилия считалась нормальной, и Ислам также имел такую сторону, что не вызывало осуждения.</p>
+            <p class="chapter-content">Несмотря на все трудности, он всегда оставался верен своей <span class="highlight">«дверной философии»</span> — он говорил, что как дверная ручка открывает мир другим, так и он сам открывает новые взгляды на жизнь.</p>
+            
+            <div class="quote">
+                <p>"Моя уникальность — это мой дар, а не проклятие"</p>
+            </div>
+        </div>
+        
+        <footer>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>История жизни Ислама Жаныбаева</p>
+            <p>© 2023 Все права защищены</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Создаем дополнительные элементы для фона
+            const bgAnimation = document.querySelector('.bg-animation');
+            for (let i = 0; i < 8; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bg-bubble');
+                
+                const size = Math.random() * 200 + 50;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 5;
+                
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${posX}%`;
+                bubble.style.top = `${posY}%`;
+                bubble.style.animationDelay = `${delay}s`;
+                
+                bgAnimation.appendChild(bubble);
+            }
+            
+            // Анимация появления блоков при прокрутке
+            const chapters = document.querySelectorAll('.chapter');
+            
+            function checkVisibility() {
+                chapters.forEach(chapter => {
+                    const position = chapter.getBoundingClientRect();
+                    
+                    if(position.top < window.innerHeight - 100) {
+                        chapter.classList.add('visible');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility();
+            
+            // Плавная прокрутка при нажатии на кнопки навигации
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const chapterTitles = document.querySelectorAll('.chapter-title');
+            
+            navButtons.forEach((button, index) => {
+                if (index < chapterTitles.length) {
+                    button.addEventListener('click', () => {
+                        chapterTitles[index].scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    });
+                }
+            });
+            
+            // Случайное мерцание иконок
+            const icons = document.querySelectorAll('.icon');
+            setInterval(() => {
+                const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+                randomIcon.style.animation = 'none';
+                setTimeout(() => {
+                    randomIcon.style.animation = 'spin 10s infinite linear';
+                }, 10);
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
